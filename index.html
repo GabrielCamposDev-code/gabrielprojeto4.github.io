@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reconhecimento de voz</title>
+</head>
+<body>
+    <style>
+        body {
+              margin: auto;
+              font-family: Arial, Helvetica, sans-serif;
+        }
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 150%;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+        }
+
+       #toggleButton {
+        background-color: #007BFF; /* Cor azul */
+  border: none; /* Sem borda */
+  color: white; /* Cor do texto */
+  padding: 15px 32px; /* Espaçamento interno */
+  text-decoration: none; /* Sem sublinhado */
+  display: inline-block; /* Exibição inline block */
+  font-size: 14px; /* Tamanho da fonte */
+  margin: 4px 2px; /* Margem */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  border-radius: 4px; /* Bordas ligeiramente arredondadas */
+  transition-duration: 0.4s; /* Duração da transição para efeitos */
+       } 
+
+
+
+       .nav {
+    background-color: blue;
+    display: flex;
+    justify-content: space-around;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 185%;
+    transition: background-color 0.3s ease;
+    padding-left: 40px;
+}
+
+
+.link:hover {
+    background-color: gray;
+
+}
+
+
+.simb, link {
+    display: inline-block;
+  vertical-align: middle; /* Alinha verticalmente no meio */
+}
+
+.simb {
+    border-radius: 50%;
+    border: solid black;
+}
+
+.r {
+text-align: center;
+}
+
+
+
+@media (max-width: 500px){
+.link{
+    font-size: 125%;
+}
+
+.simb {
+    width: 70;
+    height: 70;
+}
+
+}
+
+          
+    </style>
+</head>
+<body>
+
+    <nav class="nav"> <!--quem olha essa porra de codigo e acha facil, não sabe o trabalho que tive...-->
+        <a href="paginainicialindex.html">
+        <img src="https://media.istockphoto.com/id/1483611922/pt/vetorial/aphasia-functioning-mechanism-connection-brain-with-speech.jpg?s=612x612&w=0&k=20&c=MiB_D0s9RnQ7z3xzgNYrSQ0y_HXOOCup9EBbMapA6lE=" alt="simbolo do site" width="75" height="75" title="simbolo do site" class="simb">
+    </a>
+        <a class="link"href="tutorialindex.html">Tutorial do site</a>
+        <a class="link"href="oqueafasiaindex.html">O que é Afasia ?</a>
+         
+       </nav>
+
+       
+<div class="r">
+    <h1>Reconhecimento de Voz</h1>
+    <div id="output">O texto reconhecido aparecerá aqui...</div>
+    <br>
+    <br>
+    <button id="toggleButton">Iniciar Reconhecimento</button>
+</div>
+
+<div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper></div>
+    </div>
+
+    <script>      
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggleButton');
+    const outputDiv = document.getElementById('output');
+    
+    // Verifica se o navegador suporta a API de reconhecimento de voz
+    if (!('webkitSpeechRecognition' in window)) {
+        alert('Seu navegador não suporta a API de reconhecimento de voz.');
+        return;
+    }
+
+    // Cria uma nova instância de SpeechRecognition
+    const recognition = new webkitSpeechRecognition();
+
+    // Configura o reconhecimento de voz
+    recognition.lang = 'pt-BR'; // Define o idioma para português
+    recognition.continuous = false; // Se verdadeiro, continua ouvindo após um reconhecimento
+    recognition.interimResults = false; // Se verdadeiro, fornece resultados intermediários
+
+    let recognizing = false; // Controle do estado de reconhecimento
+
+    // Quando o reconhecimento de voz é iniciado
+    recognition.onstart = () => {
+        recognizing = true;
+        toggleButton.textContent = 'Parar Reconhecimento';
+        outputDiv.textContent = 'Escutando...';
+    };
+
+    // Quando o reconhecimento de voz é bem-sucedido
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        outputDiv.textContent = `Você disse: "${transcript}"`;
+    };
+
+    // Quando ocorre um erro
+    recognition.onerror = (event) => {
+        outputDiv.textContent = `Erro: ${event.error}`;
+    };
+
+    // Quando o reconhecimento de voz termina
+    recognition.onend = () => {
+        recognizing = false;
+        toggleButton.textContent = 'Iniciar Reconhecimento';
+    };
+
+    // Adiciona um listener para o botão
+    toggleButton.addEventListener('click', () => {
+        if (recognizing) {
+            recognition.stop();
+        } else {
+            recognition.start();
+        }
+    });
+});
+
+
+       
+    </script>
+
+
+
+</body>
+
+
+</html>
