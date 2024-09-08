@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reconhecimento de voz</title>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 </head>
 <body>
     <style>
@@ -127,7 +128,7 @@ text-align: center;
 
     <script>      
 
-
+new window.VLibras.Widget('https://vlibras.gov.br/app');
 
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('toggleButton');
