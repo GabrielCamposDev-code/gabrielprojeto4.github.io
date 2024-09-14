@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reconhecimento de voz</title>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 </head>
 <body>
     <style>
@@ -45,40 +44,32 @@ h1 {
   transition-duration: 0.4s; /* Duração da transição para efeitos */
        } 
 
-
-
-       .nav {
+       .navbar {
     background-color: blue;
     display: flex;
     justify-content: space-around;
+    
 }
 
-.link {
+.nav-link {
     color: white;
     text-decoration: none;
     padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 185%;
     transition: background-color 0.3s ease;
-    padding-left: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 150%;
 }
 
-
-.link:hover {
-    background-color: gray;
-
+.nav-link:hover {
+    background-color: red;
 }
 
+.i {
+        border-radius: 50%;
+        border: solid black;
+       }
 
-.simb, link {
-    display: inline-block;
-  vertical-align: middle; /* Alinha verticalmente no meio */
-}
 
-.simb {
-    border-radius: 50%;
-    border: solid black;
-}
 
 .r {
 text-align: center;
@@ -96,6 +87,10 @@ text-align: center;
     height: 70;
 }
 
+.nav-link {
+        font-size: 125%;
+    }
+
 }
 
           
@@ -103,14 +98,15 @@ text-align: center;
 </head>
 <body>
 
-    <nav class="nav"> <!--quem olha essa porra de codigo e acha facil, não sabe o trabalho que tive...-->
-        <a href="https://gabrielcamposdev-code.github.io/gabrielprojeto.github.io/">
-        <img src="https://media.istockphoto.com/id/1483611922/pt/vetorial/aphasia-functioning-mechanism-connection-brain-with-speech.jpg?s=612x612&w=0&k=20&c=MiB_D0s9RnQ7z3xzgNYrSQ0y_HXOOCup9EBbMapA6lE=" alt="simbolo do site" width="75" height="75" title="simbolo do site" class="simb">
-    </a>
-        <a class="link"href="https://gabrielcamposdev-code.github.io/gabrielprojeto6.github.io/">Tutorial do site</a>
-        <a class="link"href="https://gabrielcamposdev-code.github.io/gabrielprojeto3.github.io/">O que é Afasia ?</a>
-         
-       </nav>
+    
+    <nav class="navbar">
+        <a href="#">
+        <img src="https://media.istockphoto.com/id/1483611922/pt/vetorial/aphasia-functioning-mechanism-connection-brain-with-speech.jpg?s=612x612&w=0&k=20&c=MiB_D0s9RnQ7z3xzgNYrSQ0y_HXOOCup9EBbMapA6lE=" alt="i" width="75" height="75" class="i">
+       </a>
+        <a class="nav-link" href="#">Tutorial do site</a>
+        <a class="nav-link" href="#">Oque é afasia?</a>
+        <a class= "nav-link" href="#">Sobre nos</a>
+    </nav>
 
        
 <div class="r">
@@ -128,7 +124,7 @@ text-align: center;
 
     <script>      
 
-new window.VLibras.Widget('https://vlibras.gov.br/app');
+
 
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('toggleButton');
